@@ -8,10 +8,7 @@ import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -19,7 +16,7 @@ import java.io.PrintWriter;
  * 登录servlet
  * Created by 梅佳杰 on 2017/6/8.
  */
-@WebServlet("/login.do")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet{
 
     @Override
@@ -32,7 +29,7 @@ public class LoginServlet extends HttpServlet{
         res.setContentType("application/json;charset=UTF-8");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        String rem = req.getParameter("rem");
+        String remember = req.getParameter("rem");
 
         ResponseResult result = new ResponseResult(false, "用户名或密码错误");
         UserDaoImpl userDao = new UserDaoImpl();
@@ -41,6 +38,12 @@ public class LoginServlet extends HttpServlet{
             String validatePassword = user.getPassword();
             String ss = EncryptUtil.encryptMD5(password + user.getSalt());
             if (validatePassword.equals(ss)) {
+                //记住密码，将密码设置到cookie中
+                if ("on".equals(remember)) {
+                    Cookie cookie = new Cookie("username", username);
+                    cookie.setMaxAge(60*60*24*7);
+                    res.addCookie(cookie);
+                }
                 //登录成功将用户设置到session中
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user);

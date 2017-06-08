@@ -14,7 +14,7 @@ import java.io.IOException;
  * ÓÃ»§µÇÂ¼×´Ì¬¹ıÂËÆ÷
  * Created by Ã·¼Ñ½Ü on 2017/6/8.
  */
-@WebFilter("/manage/*")
+@WebFilter({"/manage/*", "*.do"})
 public class UserFilter implements Filter {
 
     @Override

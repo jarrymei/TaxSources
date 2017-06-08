@@ -203,6 +203,18 @@
                modal: true
            })
         })
+        
+        $("#userInfo").bind("click", function () {
+            $("#topWindow").dialog({
+                title: '个人信息',
+                width: 600,
+                height: 400,
+                closed: false,
+                cache: false,
+                href: 'userInfo.do',
+                modal: true
+            })
+        })
 
     });
 

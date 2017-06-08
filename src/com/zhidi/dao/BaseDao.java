@@ -43,6 +43,7 @@ public interface BaseDao<T> {
 	 * @return
 	 */
 	public boolean edit(T t);
-	
+
+
 	
 }

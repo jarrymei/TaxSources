@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 /**
  * Created by lx on 2017/6/8.
  */
-@WebServlet("/validateCaptcha.do")
+@WebServlet("/validateCaptcha")
 public class ValidateCaptchaServlet extends HttpServlet{
 
     @Override

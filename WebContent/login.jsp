@@ -49,7 +49,7 @@
 									<i class="iconfont">&#xe633;</i>
 									<input type="text" name="captcha" id="captcha" placeholder="验证码">
 								</div>
-								<span class="check-code"><img id="captchaimg" src="kaptcha.do" title="点击刷新"></span>
+								<span class="check-code"><img id="captchaimg" src="kaptcha" title="点击刷新"></span>
 							</div>
 							<div class="tips clearfix">
 								<label><input type="checkbox" id="rem" name="remUser" checked="checked">记住用户名</label>
@@ -87,7 +87,7 @@
 	})
 
 	var changeCaptch = function () {
-        $("#captchaimg").attr("src", "kaptcha.do?date="+new Date());
+        $("#captchaimg").attr("src", "kaptcha?date="+new Date());
     }
 	
 	$(".supplier").bind("click", function(){
@@ -118,7 +118,7 @@
 		}
 
 		//验证验证码ajax请求
-		var validateCaptcha = $.get("validateCaptcha.do", {"captcha":captcha}, function (result) {
+		var validateCaptcha = $.get("validateCaptcha", {"captcha":captcha}, function (result) {
 		    //验证失败
 			if (!result.success) {
                 $("#info").html("验证码错误");
@@ -129,7 +129,7 @@
 		//如果验证码正确，进行登录的ajax请求
 		$.when(validateCaptcha).done(function (result) {
 			if (result.success) {
-			    $.post("login.do", {"username":username, "password":password, "rem":rem}, function (result) {
+			    $.post("login", {"username":username, "password":password, "rem":rem}, function (result) {
 					if (result.success) {
 					    location.href = "manage/index.jsp";
 					} else {
