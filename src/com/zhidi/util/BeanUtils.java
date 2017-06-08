@@ -18,7 +18,7 @@ import org.apache.commons.beanutils.Converter;
  */
 public class BeanUtils {
 
-	public static void parse(Map<String, String> map, Object obj) throws IllegalAccessException, InvocationTargetException {
+	public static void parse(Map<String, String> map, Object obj) {
 		ConvertUtils.register(new Converter() {
 			
 			@Override
@@ -33,8 +33,17 @@ public class BeanUtils {
                 return null;
 			}
 		}, Date.class);
-		org.apache.commons.beanutils.BeanUtils.populate(obj, map);
+		try {
+			org.apache.commons.beanutils.BeanUtils.populate(obj, map);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} finally {
+		}
 	}
-	
 
+	public static void main(String[] args) {
+			System.out.println(EncryptUtil.encryptMD5(111111+"aaa"));
+	}
 }

@@ -268,10 +268,9 @@ public class EncryptUtil {
 	
 	public static void main(String[] args) {
 		
-		String s = encryptMD5("123456");
+		String s = encryptMD5("123456" + "aaa");
 		System.out.println(s);
-		String s2 = encryptSHA1("123456");
-		System.out.println(s2);
+
 	}
 
 }

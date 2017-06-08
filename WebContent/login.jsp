@@ -81,14 +81,20 @@
 	<div  id="dialog" style="padding:20px;line-height: 1.5em;"></div>
 </body>
 <script type="text/javascript">
+
 	$("#captchaimg").bind("click", function(){
-		$(this).attr("src", "kaptcha.do?date="+new Date());
+		changeCaptch();
 	})
+
+	var changeCaptch = function () {
+        $("#captchaimg").attr("src", "kaptcha.do?date="+new Date());
+    }
 	
 	$(".supplier").bind("click", function(){
 		var username = $("#username").val();
 		var password = $("#password").val();
 		var captcha = $("#captcha").val();
+		var rem = $("#rem").val();
 		
 		if (!username) {
 			$("#info").html("请输入用户名");
@@ -110,8 +116,28 @@
 		} else {
 			$("#info").html("");
 		}
-		
-		$.when()
+
+		//验证验证码ajax请求
+		var validateCaptcha = $.get("validateCaptcha.do", {"captcha":captcha}, function (result) {
+		    //验证失败
+			if (!result.success) {
+                $("#info").html("验证码错误");
+                changeCaptch();
+			}
+        })
+
+		//如果验证码正确，进行登录的ajax请求
+		$.when(validateCaptcha).done(function (result) {
+			if (result.success) {
+			    $.post("login.do", {"username":username, "password":password, "rem":rem}, function (result) {
+					if (result.success) {
+					    location.href = "manage/index.jsp";
+					} else {
+                        $("#info").html(result.msg);
+					}
+                })
+			}
+        })
 	})
 </script>
 </html>
