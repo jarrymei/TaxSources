@@ -57,11 +57,13 @@ public class UserDaoImpl implements BaseDao<User> {
 	public User getByName(String username) {
 		List<Map<String, String>> list = DBUtil.query("select * from tb_user where username=?", username);
 		Map<String, String> map = new HashMap<String, String>();
+		User user = null;
 		if (list != null && list.size() == 1) {
 			map = list.get(0);
+			user = new User();
+			BeanUtils.parse(map, user);
 		}
-		User user = new User();
-		BeanUtils.parse(map, user);
+		
 		return user;
 	}
 

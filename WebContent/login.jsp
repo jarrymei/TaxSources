@@ -118,13 +118,15 @@
 		}
 
 		//验证验证码ajax请求
+		//回调函数的参数代表
+		//js代码中json格式的数据就认为是一个对象
 		var validateCaptcha = $.get("validateCaptcha", {"captcha":captcha}, function (result) {
 		    //验证失败
 			if (!result.success) {
                 $("#info").html("验证码错误");
                 changeCaptch();
 			}
-        })
+        }, "json")
 
 		//如果验证码正确，进行登录的ajax请求
 		$.when(validateCaptcha).done(function (result) {

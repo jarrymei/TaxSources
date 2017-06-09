@@ -186,14 +186,14 @@
         });
 
         $("#editPwd").bind("click", function () {
-           /* $("#topWindow").window({
+        /* $("#topWindow").window({
                 title:'修改密码',
                 width:600,
                 height:400,
                 content:"<iframe width='100%' height='100%' src='manage/editPassword.jsp'></iframe>"
 
             })*/
-           $("#topWindow").dialog({
+            $("#topWindow").dialog({
                title: '密码修改',
                width: 600,
                height: 400,
