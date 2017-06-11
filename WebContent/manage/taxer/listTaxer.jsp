@@ -51,12 +51,20 @@
             {field:'sex',title:'性别',width:100},
             {field:'birthday',title:'出身日期',width:100},
             {field:'email',title:'邮箱',width:150},
-            {field:'organId',title:'所属税务机关',width:100}
+            {field:'organId',title:'所属税务机关',width:100},
+            {field:'option',title:'操作',width:100,
+                formatter: function(value,row,index){
+                    return "<a href='javascript:void(0)' onclick='info("+row.id+")'>查看</a>&nbsp;" +
+                        "<a href='javascript:void(0)' onclick='edit("+row.id+")'>修改</a>&nbsp;" +
+                        "<a href='javascript:void(0)' onclick='del("+row.id+")'>删除</a>";
+                 }
+            }
         ]]
     })
 
+    //添加办税专员
     $("#addBtn").bind("click", function () {
-        parent.$("#topWindow").window({
+        /*parent.$("#topWindow").window({
             title:'添加办税专员',
             width:800,
             height:600,
@@ -64,7 +72,8 @@
             modal:true,
             resizable:false,
             collapsible:false
-        });
+        });*/
+        openWindow({"title":'添加办税专员', "url":"taxer/toAddTaxer.do", "width":"800", "height":"600"});
     })
 
     //点击查询
@@ -84,6 +93,48 @@
     $("#setBtn").bind("click", function () {
         $("#taxerName").val("");
     })
+
+    //查看
+    var info = function (id) {
+        openWindow({"title":"办税人信息查看", "url":"taxer/taxerInfo.do?id="+id+"&state=info", "width":"800", "height":"600"})
+    }
+
+    //修改
+    var edit = function (id) {
+        openWindow({"title":"修改办税人信息", "url":"taxer/taxerInfo.do?id="+id+"&state=edit", "width":"800", "height": "600"})
+    }
+    //删除
+    var del = function (id) {
+        $.messager.confirm("提示信息", "确定删除?", function (r) {
+            if (r) {
+                $.post("taxer/deleteTaxer.do", {"id":id}, function (result) {
+                    if (result.success) {
+                        $.messager.alert('提示信息',"删除成功",'info', function () {
+                            $('#dg').datagrid('reload');
+                        });
+                    }
+                }, "json")
+            }
+        })
+    }
+
+    var openWindow = function (options) {
+        options = !options ? {} : options;
+        options.width = !options.width ? 500 : options.width;
+        options.height = !options.height ? 400 : options.height;
+        options.url = !options.url ? "404.html" : options.url;
+        options.title = !options.title ? "" : options.title;
+
+        parent.$("#topWindow").window({
+            title:options.title,
+            width:options.width,
+            height:options.height,
+            content : "<iframe scrolling='no' frameborder='0' border='0' height='100%' width='100%' src='"+options.url+"'></iframe>",
+            modal:true,
+            resizable:false,
+            collapsible:false
+        });
+    }
 
     /**
      * 格式化时间

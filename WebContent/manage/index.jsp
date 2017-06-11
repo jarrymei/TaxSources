@@ -74,7 +74,7 @@
             <ul class="sider-nav">
                 <!--<li class="current">-->
                 <li>
-                    <a href="javascript:addTab('纳税人管理','manage/listTaxPayer.jsp');">
+                    <a href="javascript:addTab('纳税人管理','manage/taxpayer/listTaxPayer.jsp');">
                         <span class="iconfont sider-nav-icon">&#xe620;</span>
                         <span class="sider-nav-title">纳税人管理</span>
                         <i class="iconfont">&#xe642;</i>
@@ -93,7 +93,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:addTab('办税专员管理','manage/listTaxer.jsp');">
+                    <a href="javascript:addTab('办税专员管理','manage/taxer/listTaxer.jsp');">
                         <span class="iconfont sider-nav-icon">&#xe620;</span>
                         <span class="sider-nav-title">办税专员管理</span>
                         <i class="iconfont">&#xe642;</i>

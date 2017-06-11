@@ -11,8 +11,8 @@ public class TaxPayer {
 	private String payerCode;			//纳税人识别号
 	private String payerName;			//纳税人名称
 	private String bizAddress;			//生产经营地址
-	private Integer taxOrganid;			//所属税务机关
-	private Integer industryid;			//行业
+	private Integer taxOrganId;			//所属税务机关
+	private Integer industryId;			//行业
 	private String bizScope;			//经营范围
 	private String invoiceType;			//票种核定
 	private String legalPerson;			//法人代表
@@ -26,27 +26,21 @@ public class TaxPayer {
 	private String taxerName;			//办税人员
 	private String taxerIdCard;			//办税人员身份证号码
 	private String taxerMobile;			//办税人员手机号
-	private String taxerIdCardImagerURL;//办税人员身份证扫描图片
+	private String taxerIdCardImageURL;//办税人员身份证扫描图片
 	private String bizAddressPhone;		//生产经营地电话
 	private String recordDate;			//录入日期
 	private Integer userId;				//录入人员
 
 	public TaxPayer() {
-		super();
 	}
 
-	public TaxPayer(Integer id, String payerCode, String payerName, String bizAddress, Integer taxOrganid,
-			Integer industryid, String bizScope, String invoiceType, String legalPerson, String legalIdCard,
-			String legalMobile, String legalIdCardImageURL, String finaceName, String finaceIdCard, String finaceMobile,
-			String finaceIdCardImageURL, String taxerName, String taxerIdCard, String taxerMobile,
-			String taxerIdCardImagerURL, String bizAddressPhone, String recordDate, Integer userId) {
-		super();
+	public TaxPayer(Integer id, String payerCode, String payerName, String bizAddress, Integer taxOrganId, Integer industryId, String bizScope, String invoiceType, String legalPerson, String legalIdCard, String legalMobile, String legalIdCardImageURL, String finaceName, String finaceIdCard, String finaceMobile, String finaceIdCardImageURL, String taxerName, String taxerIdCard, String taxerMobile, String taxerIdCardImageURL, String bizAddressPhone, String recordDate, Integer userId) {
 		this.id = id;
 		this.payerCode = payerCode;
 		this.payerName = payerName;
 		this.bizAddress = bizAddress;
-		this.taxOrganid = taxOrganid;
-		this.industryid = industryid;
+		this.taxOrganId = taxOrganId;
+		this.industryId = industryId;
 		this.bizScope = bizScope;
 		this.invoiceType = invoiceType;
 		this.legalPerson = legalPerson;
@@ -60,7 +54,7 @@ public class TaxPayer {
 		this.taxerName = taxerName;
 		this.taxerIdCard = taxerIdCard;
 		this.taxerMobile = taxerMobile;
-		this.taxerIdCardImagerURL = taxerIdCardImagerURL;
+		this.taxerIdCardImageURL = taxerIdCardImageURL;
 		this.bizAddressPhone = bizAddressPhone;
 		this.recordDate = recordDate;
 		this.userId = userId;
@@ -98,20 +92,20 @@ public class TaxPayer {
 		this.bizAddress = bizAddress;
 	}
 
-	public Integer getTaxOrganid() {
-		return taxOrganid;
+	public Integer getTaxOrganId() {
+		return taxOrganId;
 	}
 
-	public void setTaxOrganid(Integer taxOrganid) {
-		this.taxOrganid = taxOrganid;
+	public void setTaxOrganId(Integer taxOrganId) {
+		this.taxOrganId = taxOrganId;
 	}
 
-	public Integer getIndustryid() {
-		return industryid;
+	public Integer getIndustryId() {
+		return industryId;
 	}
 
-	public void setIndustryid(Integer industryid) {
-		this.industryid = industryid;
+	public void setIndustryId(Integer industryId) {
+		this.industryId = industryId;
 	}
 
 	public String getBizScope() {
@@ -218,12 +212,12 @@ public class TaxPayer {
 		this.taxerMobile = taxerMobile;
 	}
 
-	public String getTaxerIdCardImagerURL() {
-		return taxerIdCardImagerURL;
+	public String getTaxerIdCardImageURL() {
+		return taxerIdCardImageURL;
 	}
 
-	public void setTaxerIdCardImagerURL(String taxerIdCardImagerURL) {
-		this.taxerIdCardImagerURL = taxerIdCardImagerURL;
+	public void setTaxerIdCardImageURL(String taxerIdCardImageURL) {
+		this.taxerIdCardImageURL = taxerIdCardImageURL;
 	}
 
 	public String getBizAddressPhone() {
@@ -252,14 +246,30 @@ public class TaxPayer {
 
 	@Override
 	public String toString() {
-		return "TaxPayer [id=" + id + ", payerCode=" + payerCode + ", payerName=" + payerName + ", bizAddress="
-				+ bizAddress + ", taxOrganid=" + taxOrganid + ", industryid=" + industryid + ", bizScope=" + bizScope
-				+ ", invoiceType=" + invoiceType + ", legalPerson=" + legalPerson + ", legalIdCard=" + legalIdCard
-				+ ", legalMobile=" + legalMobile + ", legalIdCardImageURL=" + legalIdCardImageURL + ", finaceName="
-				+ finaceName + ", finaceIdCard=" + finaceIdCard + ", finaceMobile=" + finaceMobile
-				+ ", finaceIdCardImageURL=" + finaceIdCardImageURL + ", taxerName=" + taxerName + ", taxerIdCard="
-				+ taxerIdCard + ", taxerMobile=" + taxerMobile + ", taxerIdCardImagerURL=" + taxerIdCardImagerURL
-				+ ", bizAddressPhone=" + bizAddressPhone + ", recordDate=" + recordDate + ", userId=" + userId + "]";
+		return "TaxPayer{" +
+				"id=" + id +
+				", payerCode='" + payerCode + '\'' +
+				", payerName='" + payerName + '\'' +
+				", bizAddress='" + bizAddress + '\'' +
+				", taxOrganId=" + taxOrganId +
+				", industryId=" + industryId +
+				", bizScope='" + bizScope + '\'' +
+				", invoiceType='" + invoiceType + '\'' +
+				", legalPerson='" + legalPerson + '\'' +
+				", legalIdCard='" + legalIdCard + '\'' +
+				", legalMobile='" + legalMobile + '\'' +
+				", legalIdCardImageURL='" + legalIdCardImageURL + '\'' +
+				", finaceName='" + finaceName + '\'' +
+				", finaceIdCard='" + finaceIdCard + '\'' +
+				", finaceMobile='" + finaceMobile + '\'' +
+				", finaceIdCardImageURL='" + finaceIdCardImageURL + '\'' +
+				", taxerName='" + taxerName + '\'' +
+				", taxerIdCard='" + taxerIdCard + '\'' +
+				", taxerMobile='" + taxerMobile + '\'' +
+				", taxerIdCardImageURL='" + taxerIdCardImageURL + '\'' +
+				", bizAddressPhone='" + bizAddressPhone + '\'' +
+				", recordDate='" + recordDate + '\'' +
+				", userId=" + userId +
+				'}';
 	}
-	
 }

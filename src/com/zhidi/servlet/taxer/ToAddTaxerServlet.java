@@ -22,7 +22,7 @@ public class ToAddTaxerServlet extends HttpServlet {
         TaxOrganDaoImpl taxOrganDao = new TaxOrganDaoImpl();
         List<TaxOrgan> list = taxOrganDao.getAll();
         req.setAttribute("list", list);
-        req.getRequestDispatcher("/manage/addTaxer.jsp").forward(req, res);
+        req.getRequestDispatcher("/manage/taxer/addTaxer.jsp").forward(req, res);
     }
 
     @Override

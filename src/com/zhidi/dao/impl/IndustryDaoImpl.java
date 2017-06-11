@@ -1,10 +1,14 @@
 package com.zhidi.dao.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.zhidi.dao.BaseDao;
 import com.zhidi.entity.Industry;
+import com.zhidi.util.DBUtil;
+import org.apache.commons.beanutils.BeanUtils;
 
 /**
  * ÐÐÒµ´úÂëdao
@@ -15,8 +19,22 @@ public class IndustryDaoImpl extends BaseDao<Industry>{
 
 	@Override
 	public List<Industry> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Map<String, String>> list = DBUtil.query("select * from tb_industry");
+		List<Industry> industrys = new ArrayList<Industry>();
+		if (list != null && !list.isEmpty()) {
+			for (Map<String, String> map : list) {
+				Industry industry = new Industry();
+				try {
+					BeanUtils.populate(industry, map);
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					e.printStackTrace();
+				}
+				industrys.add(industry);
+			}
+		}
+		return industrys;
 	}
 
 	@Override
