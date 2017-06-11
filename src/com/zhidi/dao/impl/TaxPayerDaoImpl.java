@@ -1,6 +1,7 @@
 package com.zhidi.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.zhidi.dao.BaseDao;
 import com.zhidi.entity.TaxPayer;
@@ -10,7 +11,7 @@ import com.zhidi.entity.TaxPayer;
  * @author DELL
  *
  */
-public class TaxPayerDaoImpl implements BaseDao<TaxPayer>{
+public class TaxPayerDaoImpl extends BaseDao<TaxPayer>{
 
 	@Override
 	public List<TaxPayer> getAll() {
@@ -41,7 +42,5 @@ public class TaxPayerDaoImpl implements BaseDao<TaxPayer>{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	
 
 }

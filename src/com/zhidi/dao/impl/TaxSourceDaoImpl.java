@@ -1,6 +1,7 @@
 package com.zhidi.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.zhidi.dao.BaseDao;
 import com.zhidi.entity.TaxSource;
@@ -10,7 +11,7 @@ import com.zhidi.entity.TaxSource;
  * @author DELL
  *
  */
-public class TaxSourceDaoImpl implements BaseDao<TaxSource>{
+public class TaxSourceDaoImpl extends BaseDao<TaxSource>{
 
 	@Override
 	public List<TaxSource> getAll() {
@@ -42,5 +43,4 @@ public class TaxSourceDaoImpl implements BaseDao<TaxSource>{
 		return false;
 	}
 
-	
 }

@@ -1,6 +1,7 @@
 package com.zhidi.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.zhidi.dao.BaseDao;
 import com.zhidi.entity.Industry;
@@ -10,7 +11,7 @@ import com.zhidi.entity.Industry;
  * @author Ã·¼Ñ½Ü
  *
  */
-public class IndustryDaoImpl implements BaseDao<Industry>{
+public class IndustryDaoImpl extends BaseDao<Industry>{
 
 	@Override
 	public List<Industry> getAll() {

@@ -93,6 +93,13 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="javascript:addTab('办税专员管理','manage/listTaxer.jsp');">
+                        <span class="iconfont sider-nav-icon">&#xe620;</span>
+                        <span class="sider-nav-title">办税专员管理</span>
+                        <i class="iconfont">&#xe642;</i>
+                    </a>
+                </li>
+                <%--<li>
                     <a href="javascript:;">
                         <span class="iconfont sider-nav-icon">&#xe62f;</span>
                         <span class="sider-nav-title">系统管理</span>
@@ -118,7 +125,7 @@
                         <li><a href="#">岗位管理</a></li>
                         <li><a href="#">员工管理</a></li>
                     </ul>
-                </li>
+                </li>--%>
                 <li>
                     <a href="javascript:;">
                         <span class="iconfont sider-nav-icon">&#xe611;</span>

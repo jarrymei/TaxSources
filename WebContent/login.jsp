@@ -141,5 +141,12 @@
 			}
         })
 	})
+
+	$(function () {
+        var username = document.cookie.split("=")[1]
+        //放入cookie值
+        $("#username").val(username)
+    })
+
 </script>
 </html>

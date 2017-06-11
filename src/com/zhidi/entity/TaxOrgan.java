@@ -1,6 +1,5 @@
 package com.zhidi.entity;
 
-import java.util.Date;
 
 /**
  * 税务机关
@@ -19,15 +18,15 @@ public class TaxOrgan {
 	private Integer leaderId;	//负责人
 	private String taxTypeCode;	//国地税类型代码
 	private Integer state;		//有效标志
-	private Date recordDate;	//录入日期
+	private String recordDate;	//录入日期
 	private Integer recordUserId;//录入人员
-	
+
 	public TaxOrgan() {
 		super();
 	}
 
 	public TaxOrgan(Integer id, String organName, Integer parentId, String address, String phone, String faxPhone,
-			String email, Integer leaderId, String taxTypeCode, Integer state, Date recordDate, Integer recordUserId) {
+			String email, Integer leaderId, String taxTypeCode, Integer state, String recordDate, Integer recordUserId) {
 		super();
 		this.id = id;
 		this.organName = organName;
@@ -123,11 +122,11 @@ public class TaxOrgan {
 		this.state = state;
 	}
 
-	public Date getRecordDate() {
+	public String getRecordDate() {
 		return recordDate;
 	}
 
-	public void setRecordDate(Date recordDate) {
+	public void setRecordDate(String recordDate) {
 		this.recordDate = recordDate;
 	}
 

@@ -1,7 +1,5 @@
 package com.zhidi.entity;
 
-import java.util.Date;
-
 /**
  * 纳税人信息
  * @author 梅佳杰
@@ -30,9 +28,9 @@ public class TaxPayer {
 	private String taxerMobile;			//办税人员手机号
 	private String taxerIdCardImagerURL;//办税人员身份证扫描图片
 	private String bizAddressPhone;		//生产经营地电话
-	private Date recordDate;			//录入日期
+	private String recordDate;			//录入日期
 	private Integer userId;				//录入人员
-	
+
 	public TaxPayer() {
 		super();
 	}
@@ -41,7 +39,7 @@ public class TaxPayer {
 			Integer industryid, String bizScope, String invoiceType, String legalPerson, String legalIdCard,
 			String legalMobile, String legalIdCardImageURL, String finaceName, String finaceIdCard, String finaceMobile,
 			String finaceIdCardImageURL, String taxerName, String taxerIdCard, String taxerMobile,
-			String taxerIdCardImagerURL, String bizAddressPhone, Date recordDate, Integer userId) {
+			String taxerIdCardImagerURL, String bizAddressPhone, String recordDate, Integer userId) {
 		super();
 		this.id = id;
 		this.payerCode = payerCode;
@@ -236,11 +234,11 @@ public class TaxPayer {
 		this.bizAddressPhone = bizAddressPhone;
 	}
 
-	public Date getRecordDate() {
+	public String getRecordDate() {
 		return recordDate;
 	}
 
-	public void setRecordDate(Date recordDate) {
+	public void setRecordDate(String recordDate) {
 		this.recordDate = recordDate;
 	}
 

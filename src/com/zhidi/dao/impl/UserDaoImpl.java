@@ -14,7 +14,7 @@ import com.zhidi.util.DBUtil;
  * @author Ã·¼Ñ½Ü
  *
  */
-public class UserDaoImpl implements BaseDao<User> {
+public class UserDaoImpl extends BaseDao<User> {
 
 	@Override
 	public List<User> getAll() {

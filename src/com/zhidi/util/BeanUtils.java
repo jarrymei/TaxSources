@@ -20,11 +20,11 @@ public class BeanUtils {
 
 	public static void parse(Map<String, String> map, Object obj) {
 		ConvertUtils.register(new Converter() {
-			
+
 			@Override
 			public Object convert(Class type, Object value) {
-				 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 try {
                     return simpleDateFormat.parse(value.toString());
                 } catch (ParseException e) {

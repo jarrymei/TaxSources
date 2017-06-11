@@ -1,6 +1,5 @@
 package com.zhidi.entity;
 
-import java.util.Date;
 
 /**
  * 税源基础信息
@@ -15,21 +14,21 @@ public class TaxSource {
 	private Integer taxOrganId;		//下达部门
 	private Integer approverId;		//批准人
 	private Integer executeId;		//执行人员
-	private Date executeTime;		//执行时间
+	private String executeTime;		//执行时间
 	private String taskFrom;		//任务来源
 	private String taskState;		//任务执行状况
 	private String idea;			//调查结论或意见
 	private Integer riskLevel;		//风险等级
-	private Date recordDate;		//录入日期
+	private String recordDate;		//录入日期
 	private Integer recordUserId;	//录入人员
-	
+
 	public TaxSource() {
 		super();
 	}
 
 	public TaxSource(Integer id, Integer payerId, String taskName, Integer taxOrganId, Integer approverId,
-			Integer executeId, Date executeTime, String taskFrom, String taskState, String idea, Integer riskLevel,
-			Date recordDate, Integer recordUserId) {
+			Integer executeId, String executeTime, String taskFrom, String taskState, String idea, Integer riskLevel,
+					 String recordDate, Integer recordUserId) {
 		super();
 		this.id = id;
 		this.payerId = payerId;
@@ -94,11 +93,11 @@ public class TaxSource {
 		this.executeId = executeId;
 	}
 
-	public Date getExecuteTime() {
+	public String getExecuteTime() {
 		return executeTime;
 	}
 
-	public void setExecuteTime(Date executeTime) {
+	public void setExecuteTime(String executeTime) {
 		this.executeTime = executeTime;
 	}
 
@@ -134,11 +133,11 @@ public class TaxSource {
 		this.riskLevel = riskLevel;
 	}
 
-	public Date getRecordDate() {
+	public String getRecordDate() {
 		return recordDate;
 	}
 
-	public void setRecordDate(Date recordDate) {
+	public void setRecordDate(String recordDate) {
 		this.recordDate = recordDate;
 	}
 

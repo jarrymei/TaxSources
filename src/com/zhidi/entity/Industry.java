@@ -11,14 +11,14 @@ public class Industry {
 
 	private Integer id;				//主键
 	private String industryName;	//行业名称
-	private Date recordDate;		//录入日期
+	private String recordDate;		//录入日期
 	private Integer recordUserId;	//录入
 	
 	public Industry() {
 		super();
 	}
 
-	public Industry(Integer id, String industryName, Date recordDate, Integer recordUserId) {
+	public Industry(Integer id, String industryName, String recordDate, Integer recordUserId) {
 		super();
 		this.id = id;
 		this.industryName = industryName;
@@ -42,11 +42,11 @@ public class Industry {
 		this.industryName = industryName;
 	}
 
-	public Date getRecordDate() {
+	public String getRecordDate() {
 		return recordDate;
 	}
 
-	public void setRecordDate(Date recordDate) {
+	public void setRecordDate(String recordDate) {
 		this.recordDate = recordDate;
 	}
 

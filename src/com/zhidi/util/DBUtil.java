@@ -1,5 +1,7 @@
 package com.zhidi.util;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -89,8 +91,8 @@ public class DBUtil {
 	}
 	/**
 	 * 统一的查询语句
-	 * @param sql执行的sql预编译语句
-	 * @param args可变参数
+	 * @sql sql执行的sql预编译语句
+	 * @args args可变参数
 	 * @return 将结果返回到list集合
 	 */
 	public static List<Map<String, String>> query(String sql , Object...args){
@@ -203,14 +205,14 @@ public class DBUtil {
 				f.setAccessible(true);
 					try {
 						if(f.getType()==String.class){
-							if(f.get(obj)!=null){
+							if(f.get(obj)!=null && StringUtils.isNotEmpty(f.get(obj).toString())){
 								sql.append("'"+f.get(obj).toString()+"',");
 							}else{
 								sql.append("null,");
 							}
 							
 						}else{
-							if(f.get(obj)!=null){
+							if(f.get(obj)!=null && StringUtils.isNotEmpty(f.get(obj).toString())){
 								sql.append(f.get(obj).toString()+",");
 							}else{
 								sql.append("null,");

@@ -47,6 +47,9 @@
         ]]
     })
 
+    $('#dg').datagrid({
+        toolbar: '#tb'
+    });
 
 </script>
 <script type="text/javascript">
