@@ -9,24 +9,21 @@
     <base href="<%=basePath%>">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>添加纳税人</title>
-    <link rel="stylesheet" type="text/css" href="static/css/base.css" >
-    <link rel="stylesheet" type="text/css" href="static/easyui/uimaker/easyui.css">
+    <title>修改纳税人</title>
+    <link href="static/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/easyui/uimaker/easyui.css">
     <link rel="stylesheet" type="text/css" href="static/easyui/uimaker/icon.css">
-    <link rel="stylesheet" type="text/css" href="static/css/edit.css">
+    <link href="static/css/edit.css" rel="stylesheet">
 </head>
-<script type="text/javascript" src="static/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="static/js/calendar.js"></script>
-<script type="text/javascript"></script>
 <body>
     <div class="container">
         <div class="content">
             <div title="纳税人信息" data-options="closable:false" class="basic-info">
-                <div class="column"><span class="current">添加纳税人信息</span></div>
+                <div class="column"><span class="current">修改纳税人信息</span></div>
                 <table class="kv-table">
                     <tbody>
                     <tr>
+                        <input type="hidden" name="id" value="${taxPayer.id}" >
                         <td class="kv-label">纳税人识别号</td>
                         <td class="kv-content"><input type="text" name="payerCode" placeholder="纳税人识别号"></td>
                         <td class="kv-label">纳税人名称</td>
@@ -35,20 +32,27 @@
                     <tr>
                         <td class="kv-label">生产经营地址</td>
                         <td class="kv-content"><input type="text" name="bizAddress" placeholder="生产经营地址"></td>
-                        <td class="kv-label">经营地电话</td>
+                        <td class="kv-label">生成经营地电话</td>
                         <td class="kv-content"><input type="text" name="bizPhone" placeholder="生产经营地电话"></td>
                     </tr>
                     <tr>
                         <td class="kv-label">所属税务机关</td>
                         <td class="kv-content">
                             <select name="taxOrganId">
-                                <option value="-1" id="selectOrgan">请选择所属税务机关</option>                         
+                                <option value="-1">请选择所属税务机关</option>
+                                <option value="1">北京市国税朝阳分局</option>
+                                <option value="1">北京市国税朝阳分局</option>
+                                <option value="1">北京市国税朝阳分局</option>
                             </select>
                         </td>
                         <td class="kv-label">行业</td>
                         <td class="kv-content">
                             <select name="instruyId">
-                                <option value="-1" id="selectIndustry">请选择纳税人行业</option>
+                                <option value="-1">请选择纳税人行业</option>
+                                <option value="1">交通运输行业</option>
+                                <option value="1">交通运输行业</option>
+                                <option value="1">交通运输行业</option>
+                                <option value="1">交通运输行业</option>
                             </select>
                         </td>
                     </tr>
@@ -91,8 +95,8 @@
                         <td class="kv-content">
                             <select name="taxerId">
                                 <option value="-1">请选择办税专员</option>
-                                <option value="1">张三</option>
-                                <option value="2">李四</option>
+                                <option value="1">张晓天</option>
+                                <option value="2">樊明明</option>
                             </select>
                         </td>
                         <td class="kv-label">录入日期</td>
@@ -108,28 +112,13 @@
         </div>
     </div>
 </body>
-<script type="text/javascript">
-	$(function(){
-	/**
-		ajax请求获取外键值
-		$.post("getIndustry.do",{},function(data){
-			var industry = $("#selectIndustry")
-			$.each(data,function(index, val){
-				industry.append("<option value='"+val.industryId+"'>"+val.industryName+"</option>")
-			})
-		},"json")
-		$.post("getOrganServlet.do",{},function(data){
-			var organ = $("#selectOrgan")
-			$.each(data,function(index, val){
-				organ.append("<option value='"+val.organId+"'>"+val.organName+"</option>")
-			})
-		},"json")
-	**/
-	
-	
-	
-	})
-</script>
 </html>
-
-
+<script type="text/javascript" src="static/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="static/js/calendar.js"></script>
+<script type="text/javascript">
+    $("input[name=executeTime]").datebox({
+        formatter: easyUIFormater,
+        parser: easyUIparser
+    });
+</script>
