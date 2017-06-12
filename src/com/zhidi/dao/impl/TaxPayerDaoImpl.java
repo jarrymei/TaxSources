@@ -59,10 +59,11 @@ public class TaxPayerDaoImpl extends BaseDao<TaxPayer>{
 
 	@Override
 	public boolean edit(TaxPayer t) {
-		int count = DBUtil.add(t, "tb_tax_payer");
+		int count = DBUtil.edit(t, "tb_tax_payer", t.getId());
 		if (count == 1) {
 			return true;
 		}
 		return false;
 	}
+
 }

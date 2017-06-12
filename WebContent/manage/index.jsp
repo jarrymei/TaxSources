@@ -88,7 +88,7 @@
                     </a>
                     <ul class="sider-nav-s">
                         <li class="active"><a href="javascript:addTab('任务查询','manage/searchTask.jsp')">调查任务查询</a></li>
-                        <li><a href="javascript:addTab('调查任务录入','manage/addTask.jsp')">调查任务录入</a></li>
+                        <li><a href="javascript:addTab('调查任务录入','manage/taxsource/addTask.jsp')">调查任务录入</a></li>
                         <li><a href="javascript:addTab('未调查企业统计','manage/statistical.jsp')">未被调查企业统计</a></li>
                     </ul>
                 </li>

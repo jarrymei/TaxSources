@@ -54,11 +54,12 @@
             {field:'finaceIdCard',title:'财务人员身份号码',width:130},
             {field:'taxerName',title:'办税人员',width:100},
             {field:'recordDate',title:'录入日期',width:100},
-            {field:'option',title:'操作',width:100,align:'center',
+            {field:'option',title:'操作',width:150,align:'center',
                 formatter: function(value,row,index){
                     return "<a href='javascript:void(0)' onclick='info("+row.id+")'>查看</a>&nbsp;" +
                         "<a href='javascript:void(0)' onclick='edit("+row.id+")'>修改</a>&nbsp;" +
-                        "<a href='javascript:void(0)' onclick='del("+row.id+")'>删除</a>";
+                        "<a href='javascript:void(0)' onclick='del("+row.id+")'>删除</a>&nbsp;" +
+                        "<a href='javascript:void(0)' onclick='addTask("+row.id+")'>新增任务</a>";
                 }
             }
         ]]
@@ -86,6 +87,11 @@
     //修改纳税人
     var edit = function (id) {
         openTopWindow({"title":"修改纳税人信息" , "url":"taxpayer/toEditTaxPayer.do?id="+id, "width":"800", "height":"600"})
+    }
+
+    //新建任务
+    function addTask(id){
+        parent.addTab("调查任务录入","taxsource/toAddTask.do?id="+id)
     }
 
     var del = function (id) {
