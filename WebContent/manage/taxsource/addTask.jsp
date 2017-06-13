@@ -25,44 +25,44 @@
                 <tbody>
                 <tr>
                     <td class="kv-label">纳税人识别号</td>
-                    <td class="kv-content"><input type="text" name="payerCode" value="1001200102"
+                    <td class="kv-content"><input type="text" name="payerCode" id="payerCode" value="${result.payerCode}"
                                                   placeholder="请输入纳税人识别号，获取纳税人信息"></td>
                     <td class="kv-label">纳税人名称</td>
-                    <td class="kv-content">北京智递科技有限公司</td>
+                    <td class="kv-content" id="payerName">${result.payerName}</td>
                     <td class="kv-label">生产经营地址</td>
-                    <td class="kv-content">北京市朝阳区</td>
+                    <td class="kv-content" id="bizAddress">${result.bizAddress}区</td>
                 </tr>
                 <tr>
                     <td class="kv-label">所属税务机关</td>
-                    <td class="kv-content">北京市朝阳区国税局</td>
+                    <td class="kv-content" id="organName">${result.organName}</td>
                     <td class="kv-label">行业</td>
-                    <td class="kv-content">信息技术</td>
+                    <td class="kv-content" id="industryName">${result.industryName}</td>
                     <td class="kv-label">经营范围</td>
-                    <td class="kv-content">软件开发、计算机系统集成</td>
+                    <td class="kv-content" id="bizScope">${result.bizScope}</td>
                 </tr>
                 <tr>
                     <td class="kv-label">票种核定</td>
-                    <td class="kv-content">增值税发票</td>
+                    <td class="kv-content" id="invoiceType">${result.invoiceType}</td>
                     <td class="kv-label">法人代表人</td>
-                    <td class="kv-content">张晓明</td>
+                    <td class="kv-content" id="legalPerson">${result.legalPerson}</td>
                     <td class="kv-label">法人身份证号</td>
-                    <td class="kv-content">412331199012010111</td>
+                    <td class="kv-content" id="legalIdCard">${result.legalIdCard}</td>
                 </tr>
                 <tr>
                     <td class="kv-label">主管财务</td>
-                    <td class="kv-content">樊明明</td>
+                    <td class="kv-content" id="finaceName">${result.finaceName}</td>
                     <td class="kv-label">财务身份证号</td>
-                    <td class="kv-content">412331199012010111</td>
+                    <td class="kv-content" id="finaceIdCard">${result.finaceIdCard}</td>
                     <td class="kv-label">税收管理员</td>
-                    <td class="kv-content">田壮壮</td>
+                    <td class="kv-content" id="shuishou">${result.taxerName}</td>
                 </tr>
                 <tr>
                     <td class="kv-label">办税人员</td>
-                    <td class="kv-content">李晓峰</td>
+                    <td class="kv-content" id="taxerName">${result.taxerName}</td>
                     <td class="kv-label">录入日期</td>
-                    <td class="kv-content">2011-12-20 08:09:12</td>
+                    <td class="kv-content" id="recordDate">${result.recordDate}</td>
                     <td class="kv-label">录入人</td>
-                    <td class="kv-content">张晓梅</td>
+                    <td class="kv-content" id="username">${result.username}</td>
                 </tr>
                 </tbody>
             </table>
@@ -192,6 +192,54 @@
 <script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="static/js/calendar.js"></script>
 <script type="text/javascript">
+
+    $("#payerCode").bind("change", function () {
+        reload();
+    })
+
+
+    var reload = function () {
+        var payerCode = $("#payerCode").val();
+        if (!payerCode) {
+            return;
+        }
+        $.post("taxsource/ajaxTaxPayer.do", {"payerCode":payerCode}, function (result) {
+            if (result) {
+                $("#payerName").html(result.payerName);
+                $("#bizAddress").html(result.bizAddress);
+                $("#organName").html(result.organName);
+                $("#industryName").html(result.industryName);
+                $("#bizScope").html(result.bizScope);
+                $("#legalPerson").html(result.legalPerson);
+                $("#legalIdCard").html(result.legalIdCard);
+                $("#finaceName").html(result.finaceName);
+                $("#finaceIdCard").html(result.finaceIdCard);
+                $("#shuishou").html(result.taxerName);
+                $("#taxerName").html(result.taxerName);
+                $("#recordDate").html(result.recordDate);
+                $("#username").html(result.username);
+            } else {
+                $.messager.alert('提示信息','没有找到记录！');
+                $("#payerName").html(result.payerName);
+                $("#bizAddress").html("");
+                $("#organName").html("");
+                $("#industryName").html("");
+                $("#bizScope").html("");
+                $("#legalPerson").html("");
+                $("#legalIdCard").html("");
+                $("#finaceName").html("");
+                $("#finaceIdCard").html("");
+                $("#shuishou").html("");
+                $("#taxerName").html("");
+                $("#recordDate").html("");
+                $("#username").html("");
+            }
+
+        }, "json");
+    }
+
+
+
     $("input[name=executeTime]").datebox({
         formatter: easyUIFormater,
         parser: easyUIparser

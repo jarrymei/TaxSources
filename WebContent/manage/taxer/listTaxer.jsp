@@ -109,9 +109,11 @@
             if (r) {
                 $.post("taxer/deleteTaxer.do", {"id":id}, function (result) {
                     if (result.success) {
-                        $.messager.alert('提示信息',"删除成功",'info', function () {
+                        $.messager.alert('提示信息', result.msg,'info', function () {
                             $('#dg').datagrid('reload');
                         });
+                    } else {
+                        $.messager.alert('提示信息', result.msg, 'info')
                     }
                 }, "json")
             }

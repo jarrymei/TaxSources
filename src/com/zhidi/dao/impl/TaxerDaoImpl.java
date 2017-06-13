@@ -82,4 +82,21 @@ public class TaxerDaoImpl extends BaseDao<Taxer>{
 		return false;
 	}
 
+	/**
+	 * 是否存在子记录
+	 * @return
+	 */
+	public boolean isHaveTaxOrgan(Integer id) {
+		String sql = "SELECT COUNT(1) c FROM tb_taxer tt RIGHT JOIN tb_tax_source tts ON tt.id=tts.approverId WHERE tt.id=? GROUP BY tt.id ";
+		List<Map<String, String>> list = DBUtil.query(sql, id);
+
+		if (list != null && !list.isEmpty()) {
+			Integer count = Integer.parseInt(list.get(0).get("c"));
+			if (count > 0 ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

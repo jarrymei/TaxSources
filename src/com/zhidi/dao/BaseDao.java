@@ -73,7 +73,7 @@ public abstract class BaseDao<T> {
 		sql.append(" limit ?,?");
 		//调用工具类查询
 		List<T> resultList = new ArrayList<T>();
-		List<Map<String, String>> list = query(sql.toString(), (pageNumber-1)*pageSize, pageSize);
+		List<Map<String, String>> list = DBUtil.query(sql.toString(), (pageNumber-1)*pageSize, pageSize);
 		T t = null;
 
 		if (list != null && !list.isEmpty()) {

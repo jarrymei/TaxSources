@@ -66,4 +66,29 @@ public class TaxPayerDaoImpl extends BaseDao<TaxPayer>{
 		return false;
 	}
 
+	/**
+	 * 根据id查询关联结果
+	 * @param id
+	 * @return
+	 */
+	public Map<String, String> getMapById(Integer id, String payerCode) {
+		String sql = "SELECT ttp.*, tto.organName, ti.industryName,tu.username  FROM tb_tax_payer ttp \n" +
+				"LEFT JOIN tb_tax_organ tto ON ttp.taxOrganId=tto.id \n" +
+				"LEFT JOIN tb_industry ti ON ttp.industryId=ti.id\n" +
+				"LEFT JOIN tb_user tu ON ttp.userId=tu.id\n" +
+				"WHERE 1=1";
+
+		if (id != null) {
+			sql += " and ttp.id='"+ id +"'";
+		}
+		if (payerCode != null) {
+			sql += " and ttp.payerCode='"+ payerCode +"'";
+		}
+		List<Map<String, String>> list = DBUtil.query(sql);
+		if (list != null && !list.isEmpty()) {
+			return list.get(0);
+		}
+		return null;
+	}
+
 }
