@@ -90,7 +90,7 @@
         $("#captchaimg").attr("src", "kaptcha?date="+new Date());
     }
 	
-	$(".supplier").bind("click", function(){
+	var login = function(){
 		var username = $("#username").val();
 		var password = $("#password").val();
 		var captcha = $("#captcha").val();
@@ -140,13 +140,23 @@
                 })
 			}
         })
-	})
+	}
 
 	$(function () {
         var username = document.cookie.split("=")[1]
         //放入cookie值
         $("#username").val(username)
     })
+
+    $(".supplier").bind("click", function () {
+		login();
+    })
+
+    $("form").keydown(function() {
+        if (event.keyCode == "13") {//keyCode=13是回车键
+            login();
+        }
+    });
 
 </script>
 </html>

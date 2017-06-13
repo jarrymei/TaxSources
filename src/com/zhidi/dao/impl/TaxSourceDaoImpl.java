@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.zhidi.dao.BaseDao;
 import com.zhidi.entity.TaxSource;
+import com.zhidi.util.DBUtil;
 
 /**
  * 税源基础信息dao
@@ -27,8 +28,8 @@ public class TaxSourceDaoImpl extends BaseDao<TaxSource>{
 
 	@Override
 	public boolean add(TaxSource t) {
-		// TODO Auto-generated method stub
-		return false;
+		int count = DBUtil.add(t, "tb_tax_source");
+		return count == 1;
 	}
 
 	@Override

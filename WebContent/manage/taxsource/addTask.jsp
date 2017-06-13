@@ -19,13 +19,15 @@
 <body>
 <div class="container">
     <div class="content">
+
         <div title="纳税人信息" data-options="closable:false" class="basic-info">
             <div class="column"><span class="current">纳税人基本信息</span></div>
+            <form id="addTaskForm">
             <table class="kv-table">
                 <tbody>
                 <tr>
                     <td class="kv-label">纳税人识别号</td>
-                    <td class="kv-content"><input type="text" name="payerCode" id="payerCode" value="${result.payerCode}"
+                    <td class="kv-content"><input type="text" name="payerId" id="payerCode" class="easyui-validatebox" data-options="required:true" value="${result.payerCode}"
                                                   placeholder="请输入纳税人识别号，获取纳税人信息"></td>
                     <td class="kv-label">纳税人名称</td>
                     <td class="kv-content" id="payerName">${result.payerName}</td>
@@ -67,43 +69,45 @@
                 </tbody>
             </table>
             <div class="column"><span class="current">任务信息</span></div>
+
             <table class="kv-table">
                 <tbody>
                 <tr>
                     <td class="kv-label">任务名称</td>
-                    <td class="kv-content"><input type="text" name="taskName" placeholder="请输入任务名称"></td>
+                    <td class="kv-content"><input type="text" name="taskName" class="easyui-validatebox" data-options="required:true" placeholder="请输入任务名称"></td>
                     <td class="kv-label">下达部门</td>
-                    <td class="kv-content"><input type="text" name="publishOrgan" placeholder="请输入下达部门"></td>
+                    <td class="kv-content"><input type="text" name="taxOrganId" class="easyui-validatebox" data-options="required:true" placeholder="请输入下达部门"></td>
                     <td class="kv-label">批准人</td>
-                    <td class="kv-content"><input type="text" name="approver" placeholder="请输入批准人"></td>
+                    <td class="kv-content"><input type="text" name="approverId" class="easyui-validatebox" data-options="required:true" placeholder="请输入批准人"></td>
                 </tr>
                 <tr>
                     <td class="kv-label">执行人</td>
-                    <td class="kv-content"><input type="text" name="executer" placeholder="请输入执行人"></td>
+                    <td class="kv-content"><input type="text" name="executeId" class="easyui-validatebox" data-options="required:true" placeholder="请输入执行人"></td>
                     <td class="kv-label">执行时间</td>
-                    <td class="kv-content"><input type="text" name="executeTime"></td>
+                    <td class="kv-content"><input type="text" name="executeTime" ></td>
                     <td class="kv-label">风险登记</td>
-                    <td class="kv-content">
-                        <select>
-                            <option>请选择</option>
-                            <option>高</option>
-                            <option>中</option>
-                            <option>低</option>
+                    <td class="kv-content" >
+                        <select name="riskLevel">
+                            <option value="-1">请选择</option>
+                            <option  value="2">高</option>
+                            <option value="1">中</option>
+                            <option value="0">低</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td class="kv-label">任务执行情况</td>
                     <td class="kv-content">
-                        <textarea rows="3" style="width: 90%;"></textarea>
+                        <textarea name="taskState" rows="3" style="width: 90%;"></textarea>
                     </td>
                     <td class="kv-label">调查结论和意见</td>
                     <td class="kv-content" colspan="3">
-                        <textarea rows="3" style="width: 90%;"></textarea>
+                        <textarea name="idea" rows="3" style="width: 90%;"></textarea>
                     </td>
                 </tr>
                 </tbody>
             </table>
+
             <div class="column">
                 <span class="current">图片信息</span>
             </div>
@@ -141,46 +145,49 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="column">
-                <span class="current">视频信息</span>
-            </div>
-            <table class="kv-table">
-                <tbody>
-                <tr>
-                    <td class="kv-label">视频信息</td>
-                    <td class="kv-content">
-                        <input type="file" name="vedio">
-                    </td>
-                    <td class="kv-label">视频说明</td>
-                    <td class="kv-content" colspan="3">
-                        <input type="text" name="imageNote" style="width:80%" placeholder="请输入视频描述信息">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="kv-label">视频信息</td>
-                    <td class="kv-content">
-                        <input type="file" name="vedio">
-                    </td>
-                    <td class="kv-label">视频说明</td>
-                    <td class="kv-content" colspan="3">
-                        <input type="text" name="imageNote" style="width:80%" placeholder="请输入视频描述信息">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="kv-label">视频信息</td>
-                    <td class="kv-content">
-                        <input type="file" name="vedio">
-                    </td>
-                    <td class="kv-label">视频说明</td>
-                    <td class="kv-content" colspan="3">
-                        <input type="text" name="imageNote" style="width:80%" placeholder="请输入视频描述信息">
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            </form>
+                <%--<div class="column">
+                    <span class="current">视频信息</span>
+                </div>
+                <table class="kv-table">
+                    <tbody>
+                    <tr>
+                        <td class="kv-label">视频信息</td>
+                        <td class="kv-content">
+                            <input type="file" name="vedio">
+                        </td>
+                        <td class="kv-label">视频说明</td>
+                        <td class="kv-content" colspan="3">
+                            <input type="text" name="imageNote" style="width:80%" placeholder="请输入视频描述信息">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="kv-label">视频信息</td>
+                        <td class="kv-content">
+                            <input type="file" name="vedio">
+                        </td>
+                        <td class="kv-label">视频说明</td>
+                        <td class="kv-content" colspan="3">
+                            <input type="text" name="imageNote" style="width:80%" placeholder="请输入视频描述信息">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="kv-label">视频信息</td>
+                        <td class="kv-content">
+                            <input type="file" name="vedio">
+                        </td>
+                        <td class="kv-label">视频说明</td>
+                        <td class="kv-content" colspan="3">
+                            <input type="text" name="imageNote" style="width:80%" placeholder="请输入视频描述信息">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>--%>
+
         </div>
+
         <div class="btn-selection">
-            <a href="javascript:void(0);" class="easyui-linkbutton save-btn" data-options="selected:true">保存</a>
+            <a href="javascript:void(0);" class="easyui-linkbutton save-btn" id="saveBtn" data-options="selected:true">保存</a>
             <a href="javascript:void(0);" class="easyui-linkbutton reset-btn" data-options="selected:true">重置</a>
         </div>
     </div>
@@ -190,19 +197,37 @@
 </html>
 <script type="text/javascript" src="static/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="static/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="static/easyui/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="static/js/calendar.js"></script>
 <script type="text/javascript">
 
+    //纳税人识别号绑定change事件
     $("#payerCode").bind("change", function () {
         reload();
     })
+    
+    //给提交按钮绑定点击事件
+    $("#saveBtn").bind("click", function () {
+        var state = $("#addTaskForm").form("validate");
+        if (state) {
+            $.post("turce/aaxsoddTask.do", $("#addTaskForm").serialize(), function (result) {
+                if (result.success) {
+                    $.messager.alert("提示信息", result.msg);
+                } else {
+                    $.messager.alert("提示信息", result.msg);
+                }
+            })
+        }
+    })
+    
 
-
+    //当纳税人识别号改变时，重新加载纳税人信息
     var reload = function () {
         var payerCode = $("#payerCode").val();
         if (!payerCode) {
             return;
         }
+        //发送ajax请求获取获取纳税人信息
         $.post("taxsource/ajaxTaxPayer.do", {"payerCode":payerCode}, function (result) {
             if (result) {
                 $("#payerName").html(result.payerName);
@@ -220,7 +245,7 @@
                 $("#username").html(result.username);
             } else {
                 $.messager.alert('提示信息','没有找到记录！');
-                $("#payerName").html(result.payerName);
+                $("#payerName").html("");
                 $("#bizAddress").html("");
                 $("#organName").html("");
                 $("#industryName").html("");
@@ -234,12 +259,12 @@
                 $("#recordDate").html("");
                 $("#username").html("");
             }
-
         }, "json");
     }
 
 
 
+    //easyui日期插件
     $("input[name=executeTime]").datebox({
         formatter: easyUIFormater,
         parser: easyUIparser
